@@ -74,6 +74,10 @@ export interface Part {
     fileType: string
     uri: string
   }>
+  customFields?: Array<{
+    key: string
+    value: string
+  }>
 }
 
 export const parts: Part[] = [
