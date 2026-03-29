@@ -1,8 +1,8 @@
-import { ref } from 'vue'
+import { ref, type Ref } from 'vue'
 
 export function useEditDialog<T>() {
   const dialogOpen = ref(false)
-  const editingItem = ref<T | null>(null) as { value: T | null }
+  const editingItem = ref<T | null>(null) as Ref<T | null>
   const editingIndex = ref(-1)
 
   function openAdd() {
