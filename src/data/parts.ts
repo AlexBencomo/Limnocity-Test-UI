@@ -213,7 +213,14 @@ export const parts: Part[] = [
     },
     kitComponents: [],
     interchanges: [],
-    digitalAssets: [],
+    digitalAssets: [
+      {
+        fileName: 'eb1_main.webp',
+        assetType: 'Product Image',
+        fileType: 'WEB',
+        uri: '/images/parts/eb1.webp',
+      },
+    ],
   },
   {
     id: 'prt-003',
@@ -287,7 +294,14 @@ export const parts: Part[] = [
         notes: 'Equivalent ceramic pad set',
       },
     ],
-    digitalAssets: [],
+    digitalAssets: [
+      {
+        fileName: 'bpf400_main.webp',
+        assetType: 'Product Image',
+        fileType: 'WEB',
+        uri: '/images/parts/bpf400.webp',
+      },
+    ],
   },
   {
     id: 'prt-004',
@@ -345,7 +359,14 @@ export const parts: Part[] = [
     },
     kitComponents: [],
     interchanges: [],
-    digitalAssets: [],
+    digitalAssets: [
+      {
+        fileName: 'os1100_main.webp',
+        assetType: 'Product Image',
+        fileType: 'WEB',
+        uri: '/images/parts/os1100.webp',
+      },
+    ],
   },
   {
     id: 'prt-005',
@@ -404,6 +425,13 @@ export const parts: Part[] = [
     },
     kitComponents: [],
     interchanges: [],
-    digitalAssets: [],
+    digitalAssets: [
+      {
+        fileName: '5m1038a_main.webp',
+        assetType: 'Product Image',
+        fileType: 'WEB',
+        uri: '/images/parts/5m1038a.webp',
+      },
+    ],
   },
 ]

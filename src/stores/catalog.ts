@@ -29,6 +29,7 @@ export const useCatalogStore = defineStore('catalog', () => {
   const selectedPartIds = ref<Set<string>>(new Set())
   const sidebarCollapsed = ref(false)
   const mobileMenuOpen = ref(false)
+  const detailMode = ref(false)
 
   const selectedPart = computed(() =>
     parts.value.find((p) => p.id === selectedPartId.value) ?? null,
@@ -51,11 +52,11 @@ export const useCatalogStore = defineStore('catalog', () => {
       )
     }
 
-    if (filterCategory.value) {
+    if (filterCategory.value && filterCategory.value !== '__all__') {
       result = result.filter((p) => p.category === filterCategory.value)
     }
 
-    if (filterStatus.value) {
+    if (filterStatus.value && filterStatus.value !== '__all__') {
       result = result.filter((p) => p.status === filterStatus.value)
     }
 
@@ -85,6 +86,15 @@ export const useCatalogStore = defineStore('catalog', () => {
 
   function selectPart(id: string) {
     selectedPartId.value = id
+  }
+
+  function enterDetail(id: string) {
+    selectedPartId.value = id
+    detailMode.value = true
+  }
+
+  function exitDetail() {
+    detailMode.value = false
   }
 
   function selectTab(tab: TabName) {
@@ -296,6 +306,7 @@ export const useCatalogStore = defineStore('catalog', () => {
     parts.value = [newPart, ...parts.value]
     selectedPartId.value = id
     selectedTab.value = 'item'
+    detailMode.value = true
     return id
   }
 
@@ -322,12 +333,15 @@ export const useCatalogStore = defineStore('catalog', () => {
     selectedPartIds,
     sidebarCollapsed,
     mobileMenuOpen,
+    detailMode,
     selectedPart,
     selectedPartApplications,
     filteredParts,
     categories,
     stats,
     selectPart,
+    enterDetail,
+    exitDetail,
     selectTab,
     togglePartSelection,
     selectAllParts,

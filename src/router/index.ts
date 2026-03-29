@@ -18,11 +18,6 @@ const router = createRouter({
       component: () => import('@/views/CatalogView.vue'),
     },
     {
-      path: '/catalog/:partId',
-      name: 'catalog-detail',
-      component: () => import('@/views/CatalogView.vue'),
-    },
-    {
       path: '/brand-settings',
       name: 'brand-settings',
       component: () => import('@/views/BrandSettingsView.vue'),

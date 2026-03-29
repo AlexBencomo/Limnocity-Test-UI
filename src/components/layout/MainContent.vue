@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import { ref, onMounted, onUnmounted } from 'vue'
-import { useRouter } from 'vue-router'
 import { useCatalogStore, type TabName } from '@/stores/catalog'
 import {
   Package,
@@ -30,7 +29,6 @@ import DigitalAssetsTab from '@/components/catalog/DigitalAssetsTab.vue'
 import CustomFieldsTab from '@/components/catalog/CustomFieldsTab.vue'
 
 const store = useCatalogStore()
-const router = useRouter()
 const dropdownOpen = ref(false)
 const dropdownRef = ref<HTMLElement | null>(null)
 
@@ -70,7 +68,7 @@ function switchTab(tab: TabName) {
 }
 
 function goBack() {
-  router.push('/catalog')
+  store.exitDetail()
 }
 
 function onClickOutside(e: MouseEvent) {
@@ -97,6 +95,16 @@ onUnmounted(() => document.removeEventListener('click', onClickOutside))
         </button>
 
         <div class="h-5 w-px bg-[#ddd] hidden sm:block" />
+
+        <div class="w-10 h-10 shrink-0 rounded-lg bg-white border border-[#e0e0e0] overflow-hidden flex items-center justify-center shadow-sm">
+          <img
+            v-if="store.selectedPart.imageUrl"
+            :src="store.selectedPart.imageUrl"
+            :alt="store.selectedPart.partName"
+            class="w-full h-full object-cover"
+          />
+          <Package v-else :size="18" class="text-[#ccc]" />
+        </div>
 
         <div class="flex flex-wrap items-center gap-2 sm:gap-3 min-w-0">
           <span class="font-mono text-[14px] font-semibold text-[#1a1a2e]">{{ store.selectedPart.partNumber }}</span>

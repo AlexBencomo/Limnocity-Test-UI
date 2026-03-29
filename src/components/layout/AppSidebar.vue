@@ -48,10 +48,11 @@ function handleTabClick(tab: TabName) {
 }
 
 function isTabActive(tab: TabName) {
-  return store.selectedTab === tab && route.name === 'catalog'
+  return store.selectedTab === tab && isDetailMode.value
 }
 
 function navigate(path: string) {
+  store.exitDetail()
   router.push(path)
   store.closeMobileMenu()
 }
@@ -59,14 +60,13 @@ function navigate(path: string) {
 function navigateTab(tab: TabName) {
   handleTabClick(tab)
   if (store.selectedPartId) {
-    router.push(`/catalog/${store.selectedPartId}`)
-  } else {
-    router.push('/catalog')
+    store.enterDetail(store.selectedPartId)
   }
+  router.push('/catalog')
   store.closeMobileMenu()
 }
 
-const isDetailMode = computed(() => route.name === 'catalog-detail')
+const isDetailMode = computed(() => store.detailMode)
 
 // Close mobile menu on route change
 watch(() => route.fullPath, () => {

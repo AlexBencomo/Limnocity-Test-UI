@@ -1,17 +1,14 @@
 <script setup lang="ts">
 import { computed } from 'vue'
-import { useRouter, useRoute } from 'vue-router'
 import { useCatalogStore } from '@/stores/catalog'
 import { Menu, ArrowLeft } from 'lucide-vue-next'
 
 const store = useCatalogStore()
-const route = useRoute()
-const router = useRouter()
 
-const isDetailMode = computed(() => route.name === 'catalog-detail')
+const isDetailMode = computed(() => store.detailMode)
 
 function goBack() {
-  router.push('/catalog')
+  store.exitDetail()
 }
 </script>
 
