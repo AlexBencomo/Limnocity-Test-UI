@@ -3,6 +3,10 @@ import { useCatalogStore } from '@/stores/catalog'
 import { Input } from '@/components/ui/input'
 import { Search, ChevronDown, ArrowUpDown, ArrowRight, Plus, Package } from 'lucide-vue-next'
 
+const props = defineProps<{
+  compact?: boolean
+}>()
+
 const store = useCatalogStore()
 
 function addPart() {
@@ -15,7 +19,10 @@ function viewDetails(partId: string) {
 </script>
 
 <template>
-  <div class="flex-1 flex flex-col bg-white overflow-hidden">
+  <div
+    class="flex flex-col bg-white overflow-hidden"
+    :class="compact ? 'h-[200px] shrink-0 border-b border-[#ddd] hidden md:flex' : 'flex-1'"
+  >
     <!-- Toolbar -->
     <div class="flex flex-wrap items-center gap-2 px-3 py-1.5 border-b border-[#eee] shrink-0">
       <div class="relative w-full sm:w-56">

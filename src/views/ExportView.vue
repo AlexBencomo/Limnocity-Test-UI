@@ -7,6 +7,8 @@ import MobileHeader from '@/components/layout/MobileHeader.vue'
 
 const store = useCatalogStore()
 const exportType = ref<'pies' | 'aces' | 'both'>('both')
+const selectionMode = ref<'all' | 'pick'>('all')
+const pickedIds = ref<Set<string>>(new Set())
 
 onMounted(async () => {
   if (store.parts.length === 0) {
@@ -16,11 +18,26 @@ onMounted(async () => {
   }
 })
 
-const partsToExport = computed(() => {
-  if (store.selectedPartIds.size > 0) {
-    return store.parts.filter(p => store.selectedPartIds.has(p.id))
+function togglePicked(id: string) {
+  if (pickedIds.value.has(id)) {
+    pickedIds.value.delete(id)
+  } else {
+    pickedIds.value.add(id)
   }
-  return store.parts
+  pickedIds.value = new Set(pickedIds.value)
+}
+
+function pickAll() {
+  pickedIds.value = new Set(store.parts.map(p => p.id))
+}
+
+function pickNone() {
+  pickedIds.value = new Set()
+}
+
+const partsToExport = computed(() => {
+  if (selectionMode.value === 'all') return store.parts
+  return store.parts.filter(p => pickedIds.value.has(p.id))
 })
 
 const applicationsToExport = computed(() => {
@@ -64,12 +81,48 @@ function handleDownload() {
           <div class="w-full md:w-[280px] md:shrink-0">
             <!-- Parts to export -->
             <div class="border-b border-[#eee] pb-4 mb-4">
-              <span class="text-[12px] uppercase tracking-wider text-[#888] block mb-2">Parts to Export</span>
-              <div class="flex items-center gap-2">
+              <span class="text-[12px] uppercase tracking-wider text-[#888] block mb-3">Parts to Export</span>
+              <div class="space-y-2 mb-3">
+                <label class="flex items-center gap-2 cursor-pointer">
+                  <input type="radio" v-model="selectionMode" value="all" class="accent-[#3bbfa0]" />
+                  <span class="text-[13px] text-[#444]">All parts</span>
+                  <span class="text-[11px] text-[#aaa]">({{ store.parts.length }})</span>
+                </label>
+                <label class="flex items-center gap-2 cursor-pointer">
+                  <input type="radio" v-model="selectionMode" value="pick" class="accent-[#3bbfa0]" />
+                  <span class="text-[13px] text-[#444]">Select parts</span>
+                  <span v-if="selectionMode === 'pick'" class="text-[11px] text-[#aaa]">({{ pickedIds.size }})</span>
+                </label>
+              </div>
+
+              <!-- Part picker list -->
+              <div v-if="selectionMode === 'pick'" class="border border-[#eee] rounded max-h-[220px] overflow-auto">
+                <div class="flex items-center justify-between px-2.5 py-1.5 border-b border-[#eee] bg-[#fafafa]">
+                  <span class="text-[11px] text-[#888]">{{ pickedIds.size }} of {{ store.parts.length }} selected</span>
+                  <div class="flex gap-2">
+                    <button @click="pickAll" class="text-[11px] text-[#3bbfa0] hover:underline">All</button>
+                    <button @click="pickNone" class="text-[11px] text-[#888] hover:underline">None</button>
+                  </div>
+                </div>
+                <label
+                  v-for="p in store.parts"
+                  :key="p.id"
+                  class="flex items-center gap-2 px-2.5 py-1.5 cursor-pointer hover:bg-[#f7f7f7] transition-colors border-b border-[#f5f5f5] last:border-0"
+                >
+                  <input
+                    type="checkbox"
+                    :checked="pickedIds.has(p.id)"
+                    @change="togglePicked(p.id)"
+                    class="accent-[#3bbfa0] shrink-0"
+                  />
+                  <span class="font-mono text-[12px] text-[#1a1a2e] shrink-0">{{ p.partNumber }}</span>
+                  <span class="text-[11px] text-[#888] truncate">{{ p.partName }}</span>
+                </label>
+              </div>
+
+              <div class="flex items-center gap-2 mt-2">
                 <span class="border border-[#3bbfa0] text-[#3bbfa0] rounded-full px-2 text-[14px] font-medium">{{ selectedCount }}</span>
-                <span class="text-[12px] text-[#aaa]">
-                  {{ store.selectedPartIds.size > 0 ? 'Selected parts' : 'All parts (none selected)' }}
-                </span>
+                <span class="text-[12px] text-[#aaa]">parts will be exported</span>
               </div>
             </div>
 
