@@ -83,32 +83,32 @@ onUnmounted(() => document.removeEventListener('click', onClickOutside))
 </script>
 
 <template>
-  <div class="flex-1 overflow-auto bg-white">
+  <div class="flex-1 overflow-auto bg-white dark:bg-[#0f0f1a]">
     <template v-if="store.selectedPart">
       <!-- Header Bar -->
-      <div class="flex items-center gap-2 px-4 sm:px-5 py-3 border-b border-[#eee] bg-[#fafafa]">
+      <div class="flex items-center gap-2 px-4 sm:px-5 py-3 border-b border-[#eee] dark:border-[#2a2a40] bg-[#fafafa] dark:bg-[#181828]">
         <!-- Mobile: back button -->
         <button
-          class="md:hidden flex items-center gap-1.5 text-[12px] text-[#666] hover:text-[#1a1a2e] transition-colors mr-1"
+          class="md:hidden flex items-center gap-1.5 text-[12px] text-[#666] dark:text-[#999] hover:text-[#1a1a2e] dark:hover:text-[#e0e0e8] transition-colors mr-1"
           @click="goBack"
         >
           <ArrowLeft class="h-4 w-4" />
         </button>
 
-        <div class="w-10 h-10 shrink-0 rounded-lg bg-white border border-[#e0e0e0] overflow-hidden flex items-center justify-center shadow-sm md:hidden">
+        <div class="w-10 h-10 shrink-0 rounded-lg bg-white dark:bg-[#1a1a2e] border border-[#e0e0e0] dark:border-[#2a2a40] overflow-hidden flex items-center justify-center shadow-sm md:hidden">
           <img
             v-if="store.selectedPart.imageUrl"
             :src="store.selectedPart.imageUrl"
             :alt="store.selectedPart.partName"
             class="w-full h-full object-cover"
           />
-          <Package v-else :size="18" class="text-[#ccc]" />
+          <Package v-else :size="18" class="text-[#ccc] dark:text-[#555]" />
         </div>
 
         <div class="flex flex-wrap items-center gap-2 sm:gap-3 min-w-0">
-          <span class="font-mono text-[14px] font-semibold text-[#1a1a2e]">{{ store.selectedPart.partNumber }}</span>
-          <span class="text-[13px] text-[#666] truncate">{{ store.selectedPart.partName }}</span>
-          <span class="text-[12px] text-[#aaa] hidden sm:inline">{{ store.selectedPart.brandName }}</span>
+          <span class="font-mono text-[14px] font-semibold text-[#1a1a2e] dark:text-[#e0e0e8]">{{ store.selectedPart.partNumber }}</span>
+          <span class="text-[13px] text-[#666] dark:text-[#999] truncate">{{ store.selectedPart.partName }}</span>
+          <span class="text-[12px] text-[#aaa] dark:text-[#666] hidden sm:inline">{{ store.selectedPart.brandName }}</span>
         </div>
 
         <div class="ml-auto flex items-center gap-2">
@@ -117,7 +117,7 @@ onUnmounted(() => document.removeEventListener('click', onClickOutside))
           </span>
           <!-- Desktop: close detail view -->
           <button
-            class="hidden md:flex items-center justify-center h-7 w-7 rounded text-[#999] hover:text-[#1a1a2e] hover:bg-[#eee] transition-colors"
+            class="hidden md:flex items-center justify-center h-7 w-7 rounded text-[#999] dark:text-[#666] hover:text-[#1a1a2e] dark:hover:text-[#e0e0e8] hover:bg-[#eee] dark:hover:bg-[#2a2a40] transition-colors"
             @click="goBack"
             title="Close detail view"
           >
@@ -126,21 +126,21 @@ onUnmounted(() => document.removeEventListener('click', onClickOutside))
         </div>
       </div>
 
-      <!-- Mobile: Tab Dropdown (hidden on desktop where CatalogTabPanel handles tabs) -->
+      <!-- Mobile: Tab Dropdown -->
       <div class="md:hidden px-4 pt-4 pb-1 relative" ref="dropdownRef">
         <button
           @click="dropdownOpen = !dropdownOpen"
-          class="inline-flex items-center gap-2 px-3 py-1.5 rounded-md border border-[#e0e0e0] hover:border-[#3bbfa0] hover:bg-[#f8fffe] transition-colors text-[13px] font-medium text-[#1a1a2e]"
+          class="inline-flex items-center gap-2 px-3 py-1.5 rounded-md border border-[#e0e0e0] dark:border-[#2a2a40] hover:border-[#3bbfa0] hover:bg-[#f8fffe] dark:hover:bg-[#162e28] transition-colors text-[13px] font-medium text-[#1a1a2e] dark:text-[#e0e0e8]"
         >
           <component :is="currentTab().icon" :size="14" class="text-[#3bbfa0]" />
           <span>{{ currentTab().label }}</span>
-          <ChevronDown :size="14" class="text-[#999] transition-transform" :class="{ 'rotate-180': dropdownOpen }" />
+          <ChevronDown :size="14" class="text-[#999] dark:text-[#666] transition-transform" :class="{ 'rotate-180': dropdownOpen }" />
         </button>
 
         <Transition name="dropdown">
           <div
             v-if="dropdownOpen"
-            class="absolute left-4 top-full mt-1 z-30 w-56 bg-white rounded-lg border border-[#e0e0e0] shadow-lg py-1 overflow-hidden"
+            class="absolute left-4 top-full mt-1 z-30 w-56 bg-white dark:bg-[#181828] rounded-lg border border-[#e0e0e0] dark:border-[#2a2a40] shadow-lg py-1 overflow-hidden"
           >
             <button
               v-for="tab in tabs"
@@ -148,10 +148,10 @@ onUnmounted(() => document.removeEventListener('click', onClickOutside))
               @click="switchTab(tab.name)"
               class="w-full flex items-center gap-2.5 px-3 py-2 text-[13px] text-left transition-colors"
               :class="store.selectedTab === tab.name
-                ? 'bg-[#f0faf7] text-[#3bbfa0] font-medium'
-                : 'text-[#444] hover:bg-[#f7f7f7]'"
+                ? 'bg-[#f0faf7] dark:bg-[#162e28] text-[#3bbfa0] font-medium'
+                : 'text-[#444] dark:text-[#ccc] hover:bg-[#f7f7f7] dark:hover:bg-[#1e1e30]'"
             >
-              <component :is="tab.icon" :size="14" :class="store.selectedTab === tab.name ? 'text-[#3bbfa0]' : 'text-[#aaa]'" />
+              <component :is="tab.icon" :size="14" :class="store.selectedTab === tab.name ? 'text-[#3bbfa0]' : 'text-[#aaa] dark:text-[#666]'" />
               <span>{{ tab.label }}</span>
             </button>
           </div>
@@ -165,7 +165,7 @@ onUnmounted(() => document.removeEventListener('click', onClickOutside))
     </template>
 
     <template v-else>
-      <div class="flex items-center justify-center h-64 text-[#aaa] text-[13px]">
+      <div class="flex items-center justify-center h-64 text-[#aaa] dark:text-[#666] text-[13px]">
         Select a part from the list to view details.
       </div>
     </template>

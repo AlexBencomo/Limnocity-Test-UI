@@ -151,21 +151,21 @@ function save() {
 <template>
   <div>
     <!-- Main Section -->
-    <div class="pb-5 mb-5 border-b border-[#eee]">
-      <div class="text-[12px] text-[#888] uppercase tracking-wider mb-4">Main</div>
+    <div class="pb-5 mb-5 border-b border-[#eee] dark:border-[#2a2a40]">
+      <div class="text-[12px] text-[#888] dark:text-[#888899] uppercase tracking-wider mb-4">Main</div>
       <div class="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-4">
         <div>
-          <label class="block text-[12px] text-[#888] uppercase tracking-wider mb-1.5">Part Number</label>
-          <Input v-model="form.partNumber" class="h-7 text-[13px] border-[#ddd] focus:border-[#3bbfa0]" />
+          <label class="block text-[12px] text-[#888] dark:text-[#888899] uppercase tracking-wider mb-1.5">Part Number</label>
+          <Input v-model="form.partNumber" class="h-7 text-[13px] border-[#ddd] dark:border-[#2a2a40] focus:border-[#3bbfa0]" />
         </div>
         <div>
-          <label class="block text-[12px] text-[#888] uppercase tracking-wider mb-1.5">Base Part Number</label>
-          <Input v-model="form.basePartNumber" class="h-7 text-[13px] border-[#ddd] focus:border-[#3bbfa0]" />
+          <label class="block text-[12px] text-[#888] dark:text-[#888899] uppercase tracking-wider mb-1.5">Base Part Number</label>
+          <Input v-model="form.basePartNumber" class="h-7 text-[13px] border-[#ddd] dark:border-[#2a2a40] focus:border-[#3bbfa0]" />
         </div>
         <div>
-          <label class="block text-[12px] text-[#888] uppercase tracking-wider mb-1.5">Category</label>
+          <label class="block text-[12px] text-[#888] dark:text-[#888899] uppercase tracking-wider mb-1.5">Category</label>
           <Select :model-value="form.category" @update:model-value="onCategoryChange">
-            <SelectTrigger class="h-7 text-[13px] border-[#ddd]">
+            <SelectTrigger class="h-7 text-[13px] border-[#ddd] dark:border-[#2a2a40]">
               <SelectValue placeholder="Select category" />
             </SelectTrigger>
             <SelectContent>
@@ -176,9 +176,9 @@ function save() {
           </Select>
         </div>
         <div>
-          <label class="block text-[12px] text-[#888] uppercase tracking-wider mb-1.5">Subcategory</label>
+          <label class="block text-[12px] text-[#888] dark:text-[#888899] uppercase tracking-wider mb-1.5">Subcategory</label>
           <Select :model-value="form.subcategory" @update:model-value="onSubcategoryChange" :disabled="!form.category">
-            <SelectTrigger class="h-7 text-[13px] border-[#ddd]">
+            <SelectTrigger class="h-7 text-[13px] border-[#ddd] dark:border-[#2a2a40]">
               <SelectValue placeholder="Select subcategory" />
             </SelectTrigger>
             <SelectContent>
@@ -189,11 +189,11 @@ function save() {
           </Select>
         </div>
         <div class="md:col-span-2">
-          <label class="block text-[12px] text-[#888] uppercase tracking-wider mb-1.5">Part Type</label>
+          <label class="block text-[12px] text-[#888] dark:text-[#888899] uppercase tracking-wider mb-1.5">Part Type</label>
           <div class="flex items-center gap-2">
             <div class="flex-1">
               <Select :model-value="String(form.partTerminologyId)" @update:model-value="onPartTypeChange" :disabled="!form.subcategory">
-                <SelectTrigger class="h-7 text-[13px] border-[#ddd]">
+                <SelectTrigger class="h-7 text-[13px] border-[#ddd] dark:border-[#2a2a40]">
                   <SelectValue :placeholder="form.partName || 'Select part type'" />
                 </SelectTrigger>
                 <SelectContent>
@@ -207,9 +207,9 @@ function save() {
           </div>
         </div>
         <div>
-          <label class="block text-[12px] text-[#888] uppercase tracking-wider mb-1.5">Brand</label>
+          <label class="block text-[12px] text-[#888] dark:text-[#888899] uppercase tracking-wider mb-1.5">Brand</label>
           <Select :model-value="form.brandCode" @update:model-value="onBrandChange">
-            <SelectTrigger class="h-7 text-[13px] border-[#ddd]">
+            <SelectTrigger class="h-7 text-[13px] border-[#ddd] dark:border-[#2a2a40]">
               <SelectValue :placeholder="form.brandName || 'Select brand'" />
             </SelectTrigger>
             <SelectContent>
@@ -220,9 +220,9 @@ function save() {
           </Select>
         </div>
         <div>
-          <label class="block text-[12px] text-[#888] uppercase tracking-wider mb-1.5">Sub Brand</label>
+          <label class="block text-[12px] text-[#888] dark:text-[#888899] uppercase tracking-wider mb-1.5">Sub Brand</label>
           <Select v-model="form.subBrand">
-            <SelectTrigger class="h-7 text-[13px] border-[#ddd]">
+            <SelectTrigger class="h-7 text-[13px] border-[#ddd] dark:border-[#2a2a40]">
               <SelectValue :placeholder="form.subBrand || 'Select sub-brand'" />
             </SelectTrigger>
             <SelectContent>
@@ -238,22 +238,22 @@ function save() {
         </div>
         <div class="flex items-center gap-2 pt-1">
           <Checkbox v-model:checked="form.universalPart" />
-          <span class="text-[13px] text-[#444]">Universal Part</span>
+          <span class="text-[13px] text-[#444] dark:text-[#ccc]">Universal Part</span>
         </div>
         <div class="flex items-center gap-2 pt-1">
           <Checkbox v-model:checked="form.acesApplications" />
-          <span class="text-[13px] text-[#444]">ACES Applications</span>
+          <span class="text-[13px] text-[#444] dark:text-[#ccc]">ACES Applications</span>
         </div>
         <div class="md:col-span-2">
-          <label class="block text-[12px] text-[#888] uppercase tracking-wider mb-1.5">Quantity Per Application</label>
+          <label class="block text-[12px] text-[#888] dark:text-[#888899] uppercase tracking-wider mb-1.5">Quantity Per Application</label>
           <div class="flex flex-wrap items-center gap-3">
             <Input
               type="number"
               v-model.number="form.quantityPerApplication"
-              class="w-20 h-7 text-[13px] border-[#ddd] focus:border-[#3bbfa0]"
+              class="w-20 h-7 text-[13px] border-[#ddd] dark:border-[#2a2a40] focus:border-[#3bbfa0]"
             />
             <Select v-model="form.quantityQualifier">
-              <SelectTrigger class="w-56 h-7 text-[13px] border-[#ddd]">
+              <SelectTrigger class="w-56 h-7 text-[13px] border-[#ddd] dark:border-[#2a2a40]">
                 <SelectValue />
               </SelectTrigger>
               <SelectContent>
@@ -264,7 +264,7 @@ function save() {
               </SelectContent>
             </Select>
             <Select v-model="form.quantityUom">
-              <SelectTrigger class="w-28 h-7 text-[13px] border-[#ddd]">
+              <SelectTrigger class="w-28 h-7 text-[13px] border-[#ddd] dark:border-[#2a2a40]">
                 <SelectValue />
               </SelectTrigger>
               <SelectContent>
@@ -280,33 +280,33 @@ function save() {
     </div>
 
     <!-- Order Information -->
-    <div class="pb-5 mb-5 border-b border-[#eee]">
-      <div class="text-[12px] text-[#888] uppercase tracking-wider mb-4">Order Information</div>
+    <div class="pb-5 mb-5 border-b border-[#eee] dark:border-[#2a2a40]">
+      <div class="text-[12px] text-[#888] dark:text-[#888899] uppercase tracking-wider mb-4">Order Information</div>
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-4">
         <div>
-          <label class="block text-[12px] text-[#888] uppercase tracking-wider mb-1.5">Minimum Order Quantity</label>
-          <Input type="number" model-value="1" class="h-7 text-[13px] border-[#ddd] focus:border-[#3bbfa0]" />
+          <label class="block text-[12px] text-[#888] dark:text-[#888899] uppercase tracking-wider mb-1.5">Minimum Order Quantity</label>
+          <Input type="number" model-value="1" class="h-7 text-[13px] border-[#ddd] dark:border-[#2a2a40] focus:border-[#3bbfa0]" />
         </div>
         <div>
-          <label class="block text-[12px] text-[#888] uppercase tracking-wider mb-1.5">Effective Date</label>
-          <Input type="date" v-model="form.createdAt" class="h-7 text-[13px] border-[#ddd] focus:border-[#3bbfa0]" />
+          <label class="block text-[12px] text-[#888] dark:text-[#888899] uppercase tracking-wider mb-1.5">Effective Date</label>
+          <Input type="date" v-model="form.createdAt" class="h-7 text-[13px] border-[#ddd] dark:border-[#2a2a40] focus:border-[#3bbfa0]" />
         </div>
         <div>
-          <label class="block text-[12px] text-[#888] uppercase tracking-wider mb-1.5">Available Date</label>
-          <Input type="date" v-model="form.createdAt" class="h-7 text-[13px] border-[#ddd] focus:border-[#3bbfa0]" />
+          <label class="block text-[12px] text-[#888] dark:text-[#888899] uppercase tracking-wider mb-1.5">Available Date</label>
+          <Input type="date" v-model="form.createdAt" class="h-7 text-[13px] border-[#ddd] dark:border-[#2a2a40] focus:border-[#3bbfa0]" />
         </div>
         <div>
-          <label class="block text-[12px] text-[#888] uppercase tracking-wider mb-1.5">GTIN / UPC</label>
-          <Input v-model="form.gtin" class="h-7 text-[13px] border-[#ddd] focus:border-[#3bbfa0] font-mono" />
+          <label class="block text-[12px] text-[#888] dark:text-[#888899] uppercase tracking-wider mb-1.5">GTIN / UPC</label>
+          <Input v-model="form.gtin" class="h-7 text-[13px] border-[#ddd] dark:border-[#2a2a40] focus:border-[#3bbfa0] font-mono" />
         </div>
         <div>
-          <label class="block text-[12px] text-[#888] uppercase tracking-wider mb-1.5">Container Type</label>
-          <Input v-model="form.containerType" class="h-7 text-[13px] border-[#ddd] focus:border-[#3bbfa0]" />
+          <label class="block text-[12px] text-[#888] dark:text-[#888899] uppercase tracking-wider mb-1.5">Container Type</label>
+          <Input v-model="form.containerType" class="h-7 text-[13px] border-[#ddd] dark:border-[#2a2a40] focus:border-[#3bbfa0]" />
         </div>
         <div>
-          <label class="block text-[12px] text-[#888] uppercase tracking-wider mb-1.5">Status</label>
+          <label class="block text-[12px] text-[#888] dark:text-[#888899] uppercase tracking-wider mb-1.5">Status</label>
           <Select v-model="form.status">
-            <SelectTrigger class="h-7 text-[13px] border-[#ddd]">
+            <SelectTrigger class="h-7 text-[13px] border-[#ddd] dark:border-[#2a2a40]">
               <SelectValue />
             </SelectTrigger>
             <SelectContent>
@@ -326,7 +326,7 @@ function save() {
         class="flex items-center gap-1.5 text-[12px] px-4 py-1.5 rounded-sm transition-colors"
         :class="isDirty
           ? 'text-white bg-[#3bbfa0] hover:bg-[#2ea88a]'
-          : 'text-[#aaa] bg-[#f0f0f0] cursor-not-allowed'"
+          : 'text-[#aaa] dark:text-[#666] bg-[#f0f0f0] dark:bg-[#1a1a2e] cursor-not-allowed'"
         @click="save"
       >
         <Save class="h-3.5 w-3.5" />

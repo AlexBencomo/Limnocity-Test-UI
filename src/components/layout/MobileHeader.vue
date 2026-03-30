@@ -13,7 +13,7 @@ function goBack() {
 </script>
 
 <template>
-  <header class="flex md:hidden items-center gap-3 px-4 h-12 bg-[#1a1a2e] border-b border-white/[0.08] shrink-0">
+  <header class="flex md:hidden items-center gap-3 px-4 h-12 bg-[#1a1a2e] dark:bg-[#0a0a16] border-b border-white/[0.08] shrink-0">
     <!-- Back arrow in detail mode, hamburger otherwise -->
     <button
       v-if="isDetailMode"

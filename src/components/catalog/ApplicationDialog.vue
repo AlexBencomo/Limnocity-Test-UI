@@ -93,7 +93,7 @@ const isEditing = () => !!props.application
     <DialogContent class="sm:max-w-[560px] max-h-[90vh] overflow-y-auto">
       <DialogHeader>
         <DialogTitle class="text-[15px]">{{ isEditing() ? 'Edit Application' : 'Add Application' }}</DialogTitle>
-        <DialogDescription class="text-[12px] text-[#888]">
+        <DialogDescription class="text-[12px] text-[#888] dark:text-[#888899]">
           {{ isEditing() ? 'Update vehicle fitment details.' : 'Add vehicle fitment data for this part.' }}
         </DialogDescription>
       </DialogHeader>
@@ -102,86 +102,86 @@ const isEditing = () => !!props.application
         <!-- Vehicle Info -->
         <div class="grid grid-cols-3 gap-3">
           <div>
-            <label class="text-[11px] text-[#888] uppercase tracking-wider mb-1 block">Year</label>
-            <Input v-model.number="form.year" type="number" class="h-8 text-[13px] border-[#ddd]" />
+            <label class="text-[11px] text-[#888] dark:text-[#888899] uppercase tracking-wider mb-1 block">Year</label>
+            <Input v-model.number="form.year" type="number" class="h-8 text-[13px] border-[#ddd] dark:border-[#2a2a40]" />
           </div>
           <div>
-            <label class="text-[11px] text-[#888] uppercase tracking-wider mb-1 block">Make</label>
-            <Input v-model="form.make" placeholder="e.g. Honda" class="h-8 text-[13px] border-[#ddd]" />
+            <label class="text-[11px] text-[#888] dark:text-[#888899] uppercase tracking-wider mb-1 block">Make</label>
+            <Input v-model="form.make" placeholder="e.g. Honda" class="h-8 text-[13px] border-[#ddd] dark:border-[#2a2a40]" />
           </div>
           <div>
-            <label class="text-[11px] text-[#888] uppercase tracking-wider mb-1 block">Model</label>
-            <Input v-model="form.model" placeholder="e.g. Accord" class="h-8 text-[13px] border-[#ddd]" />
+            <label class="text-[11px] text-[#888] dark:text-[#888899] uppercase tracking-wider mb-1 block">Model</label>
+            <Input v-model="form.model" placeholder="e.g. Accord" class="h-8 text-[13px] border-[#ddd] dark:border-[#2a2a40]" />
           </div>
         </div>
 
         <div class="grid grid-cols-2 gap-3">
           <div>
-            <label class="text-[11px] text-[#888] uppercase tracking-wider mb-1 block">Sub Model</label>
-            <Input v-model="form.subModel" placeholder="e.g. EX-L" class="h-8 text-[13px] border-[#ddd]" />
+            <label class="text-[11px] text-[#888] dark:text-[#888899] uppercase tracking-wider mb-1 block">Sub Model</label>
+            <Input v-model="form.subModel" placeholder="e.g. EX-L" class="h-8 text-[13px] border-[#ddd] dark:border-[#2a2a40]" />
           </div>
           <div>
-            <label class="text-[11px] text-[#888] uppercase tracking-wider mb-1 block">Body Type</label>
-            <Input v-model="form.bodyType" placeholder="e.g. Sedan" class="h-8 text-[13px] border-[#ddd]" />
+            <label class="text-[11px] text-[#888] dark:text-[#888899] uppercase tracking-wider mb-1 block">Body Type</label>
+            <Input v-model="form.bodyType" placeholder="e.g. Sedan" class="h-8 text-[13px] border-[#ddd] dark:border-[#2a2a40]" />
           </div>
         </div>
 
         <!-- Engine & Drive -->
         <div class="grid grid-cols-2 gap-3">
           <div>
-            <label class="text-[11px] text-[#888] uppercase tracking-wider mb-1 block">Engine</label>
-            <Input v-model="form.engineBase" placeholder="e.g. 2.4L 4-cyl" class="h-8 text-[13px] border-[#ddd]" />
+            <label class="text-[11px] text-[#888] dark:text-[#888899] uppercase tracking-wider mb-1 block">Engine</label>
+            <Input v-model="form.engineBase" placeholder="e.g. 2.4L 4-cyl" class="h-8 text-[13px] border-[#ddd] dark:border-[#2a2a40]" />
           </div>
           <div>
-            <label class="text-[11px] text-[#888] uppercase tracking-wider mb-1 block">Fuel Type</label>
-            <Input v-model="form.fuelType" placeholder="e.g. Gas" class="h-8 text-[13px] border-[#ddd]" />
+            <label class="text-[11px] text-[#888] dark:text-[#888899] uppercase tracking-wider mb-1 block">Fuel Type</label>
+            <Input v-model="form.fuelType" placeholder="e.g. Gas" class="h-8 text-[13px] border-[#ddd] dark:border-[#2a2a40]" />
           </div>
         </div>
 
         <div class="grid grid-cols-3 gap-3">
           <div>
-            <label class="text-[11px] text-[#888] uppercase tracking-wider mb-1 block">Drive Type</label>
-            <Input v-model="form.driveType" placeholder="e.g. FWD" class="h-8 text-[13px] border-[#ddd]" />
+            <label class="text-[11px] text-[#888] dark:text-[#888899] uppercase tracking-wider mb-1 block">Drive Type</label>
+            <Input v-model="form.driveType" placeholder="e.g. FWD" class="h-8 text-[13px] border-[#ddd] dark:border-[#2a2a40]" />
           </div>
           <div>
-            <label class="text-[11px] text-[#888] uppercase tracking-wider mb-1 block">Position</label>
-            <Input v-model="form.position" placeholder="e.g. Rear" class="h-8 text-[13px] border-[#ddd]" />
+            <label class="text-[11px] text-[#888] dark:text-[#888899] uppercase tracking-wider mb-1 block">Position</label>
+            <Input v-model="form.position" placeholder="e.g. Rear" class="h-8 text-[13px] border-[#ddd] dark:border-[#2a2a40]" />
           </div>
           <div>
-            <label class="text-[11px] text-[#888] uppercase tracking-wider mb-1 block">Quantity</label>
-            <Input v-model.number="form.quantity" type="number" min="1" class="h-8 text-[13px] border-[#ddd]" />
+            <label class="text-[11px] text-[#888] dark:text-[#888899] uppercase tracking-wider mb-1 block">Quantity</label>
+            <Input v-model.number="form.quantity" type="number" min="1" class="h-8 text-[13px] border-[#ddd] dark:border-[#2a2a40]" />
           </div>
         </div>
 
         <!-- Base Vehicle ID -->
         <div>
-          <label class="text-[11px] text-[#888] uppercase tracking-wider mb-1 block">Base Vehicle ID</label>
-          <Input v-model.number="form.baseVehicleId" type="number" class="h-8 text-[13px] border-[#ddd] w-40" />
+          <label class="text-[11px] text-[#888] dark:text-[#888899] uppercase tracking-wider mb-1 block">Base Vehicle ID</label>
+          <Input v-model.number="form.baseVehicleId" type="number" class="h-8 text-[13px] border-[#ddd] dark:border-[#2a2a40] w-40" />
         </div>
 
         <!-- Qualifiers -->
         <div>
-          <label class="text-[11px] text-[#888] uppercase tracking-wider mb-1 block">Qualifiers</label>
+          <label class="text-[11px] text-[#888] dark:text-[#888899] uppercase tracking-wider mb-1 block">Qualifiers</label>
           <div class="flex flex-wrap gap-1 mb-2" v-if="form.qualifiers.length">
             <span
               v-for="q in form.qualifiers"
               :key="q"
-              class="inline-flex items-center gap-1 text-[11px] text-[#666] border border-[#ddd] px-2 py-0.5 rounded-sm"
+              class="inline-flex items-center gap-1 text-[11px] text-[#666] dark:text-[#999] border border-[#ddd] dark:border-[#2a2a40] px-2 py-0.5 rounded-sm"
             >
               {{ q }}
-              <button class="text-[#aaa] hover:text-[#666]" @click="removeQualifier(q)">&times;</button>
+              <button class="text-[#aaa] dark:text-[#666] hover:text-[#666] dark:hover:text-[#999]" @click="removeQualifier(q)">&times;</button>
             </span>
           </div>
           <div class="flex gap-2">
             <Input
               v-model="qualifierInput"
               placeholder="Add qualifier..."
-              class="h-8 text-[13px] border-[#ddd] flex-1"
+              class="h-8 text-[13px] border-[#ddd] dark:border-[#2a2a40] flex-1"
               @keydown.enter.prevent="addQualifier"
             />
             <button
               type="button"
-              class="text-[12px] text-[#444] border border-[#ddd] px-3 rounded-sm hover:border-[#3bbfa0] transition-colors h-8"
+              class="text-[12px] text-[#444] dark:text-[#ccc] border border-[#ddd] dark:border-[#2a2a40] px-3 rounded-sm hover:border-[#3bbfa0] transition-colors h-8"
               @click="addQualifier"
             >Add</button>
           </div>
@@ -189,12 +189,12 @@ const isEditing = () => !!props.application
 
         <!-- Notes -->
         <div>
-          <label class="text-[11px] text-[#888] uppercase tracking-wider mb-1 block">Notes</label>
+          <label class="text-[11px] text-[#888] dark:text-[#888899] uppercase tracking-wider mb-1 block">Notes</label>
           <textarea
             v-model="form.notes"
             placeholder="Optional notes..."
             rows="2"
-            class="w-full rounded-sm border border-[#ddd] px-3 py-2 text-[13px] focus:border-[#3bbfa0] focus:outline-none resize-none"
+            class="w-full rounded-sm border border-[#ddd] dark:border-[#2a2a40] px-3 py-2 text-[13px] focus:border-[#3bbfa0] focus:outline-none resize-none"
           />
         </div>
       </div>
@@ -211,7 +211,7 @@ const isEditing = () => !!props.application
         </button>
         <button
           type="button"
-          class="text-[12px] text-[#666] border border-[#ddd] px-4 py-1.5 rounded-sm hover:bg-[#f8f8f8] transition-colors"
+          class="text-[12px] text-[#666] dark:text-[#999] border border-[#ddd] dark:border-[#2a2a40] px-4 py-1.5 rounded-sm hover:bg-[#f8f8f8] dark:hover:bg-[#181828] transition-colors"
           @click="emit('update:open', false)"
         >Cancel</button>
         <button

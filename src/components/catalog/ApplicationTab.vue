@@ -32,13 +32,13 @@ function openEdit(app: Application) {
     <div class="flex items-center justify-between mb-4">
       <div class="flex items-center gap-3">
         <div class="relative w-64">
-          <Search class="absolute left-2.5 top-1.5 h-3.5 w-3.5 text-[#aaa]" />
-          <Input placeholder="Search applications..." class="pl-8 h-7 text-[13px] border-[#ddd] focus:border-[#3bbfa0]" />
+          <Search class="absolute left-2.5 top-1.5 h-3.5 w-3.5 text-[#aaa] dark:text-[#666]" />
+          <Input placeholder="Search applications..." class="pl-8 h-7 text-[13px] border-[#ddd] dark:border-[#2a2a40] focus:border-[#3bbfa0]" />
         </div>
         <span class="border border-[#3bbfa0] text-[#3bbfa0] text-[11px] px-2 py-0.5 rounded-sm">{{ applications.length }} applications</span>
       </div>
       <button
-        class="flex items-center gap-1 text-[12px] text-[#444] border border-[#ddd] px-3 py-1 rounded-sm hover:border-[#3bbfa0] transition-colors"
+        class="flex items-center gap-1 text-[12px] text-[#444] dark:text-[#ccc] border border-[#ddd] dark:border-[#2a2a40] px-3 py-1 rounded-sm hover:border-[#3bbfa0] transition-colors"
         @click="openAdd"
       >
         <Plus class="h-3.5 w-3.5" />
@@ -51,40 +51,40 @@ function openEdit(app: Application) {
       <div
         v-for="app in applications"
         :key="app.id"
-        class="border border-[#eee] rounded-sm p-3 hover:border-[#3bbfa0] transition-colors cursor-pointer"
+        class="border border-[#eee] dark:border-[#2a2a40] rounded-sm p-3 hover:border-[#3bbfa0] transition-colors cursor-pointer"
         @click="openEdit(app)"
       >
         <!-- Vehicle header -->
         <div class="flex items-center justify-between mb-2">
-          <span class="text-[13px] text-[#1a1a2e]">
+          <span class="text-[13px] text-[#1a1a2e] dark:text-[#e0e0e8]">
             {{ app.year }} {{ app.make }} {{ app.model }}
           </span>
-          <span class="text-[11px] text-[#aaa] border border-[#ddd] px-1.5 py-0.5 rounded-sm">Qty: {{ app.quantity }}</span>
+          <span class="text-[11px] text-[#aaa] dark:text-[#666] border border-[#ddd] dark:border-[#2a2a40] px-1.5 py-0.5 rounded-sm">Qty: {{ app.quantity }}</span>
         </div>
 
         <!-- Vehicle details grid -->
         <div class="grid grid-cols-2 gap-1.5 text-[11px]">
-          <div class="flex items-center gap-1.5 text-[#888]">
+          <div class="flex items-center gap-1.5 text-[#888] dark:text-[#888899]">
             <Car class="h-3 w-3 shrink-0" />
             <span>{{ app.subModel || 'Base' }}</span>
           </div>
-          <div class="flex items-center gap-1.5 text-[#888]">
+          <div class="flex items-center gap-1.5 text-[#888] dark:text-[#888899]">
             <Settings class="h-3 w-3 shrink-0" />
             <span>{{ app.engineBase }}</span>
           </div>
-          <div class="flex items-center gap-1.5 text-[#888]">
+          <div class="flex items-center gap-1.5 text-[#888] dark:text-[#888899]">
             <Fuel class="h-3 w-3 shrink-0" />
             <span>{{ app.fuelType }}</span>
           </div>
-          <div class="flex items-center gap-1.5 text-[#888]">
+          <div class="flex items-center gap-1.5 text-[#888] dark:text-[#888899]">
             <Gauge class="h-3 w-3 shrink-0" />
             <span>{{ app.driveType }}</span>
           </div>
-          <div class="flex items-center gap-1.5 text-[#888]">
+          <div class="flex items-center gap-1.5 text-[#888] dark:text-[#888899]">
             <MapPin class="h-3 w-3 shrink-0" />
             <span>{{ app.position || 'N/A' }}</span>
           </div>
-          <div class="flex items-center gap-1.5 text-[#888]">
+          <div class="flex items-center gap-1.5 text-[#888] dark:text-[#888899]">
             <span class="font-mono">ID: {{ app.baseVehicleId }}</span>
           </div>
         </div>
@@ -94,7 +94,7 @@ function openEdit(app: Application) {
           <span
             v-for="q in app.qualifiers"
             :key="q"
-            class="text-[11px] text-[#888] border border-[#ddd] px-1.5 py-0.5 rounded-sm"
+            class="text-[11px] text-[#888] dark:text-[#888899] border border-[#ddd] dark:border-[#2a2a40] px-1.5 py-0.5 rounded-sm"
           >
             {{ q }}
           </span>
@@ -107,11 +107,11 @@ function openEdit(app: Application) {
       v-if="applications.length === 0"
       class="flex flex-col items-center justify-center py-10"
     >
-      <Car class="h-8 w-8 text-[#aaa] mb-3" />
-      <p class="text-[13px] text-[#aaa]">No applications yet</p>
-      <p class="text-[11px] text-[#aaa] mt-1">Add vehicle fitment data for this part.</p>
+      <Car class="h-8 w-8 text-[#aaa] dark:text-[#666] mb-3" />
+      <p class="text-[13px] text-[#aaa] dark:text-[#666]">No applications yet</p>
+      <p class="text-[11px] text-[#aaa] dark:text-[#666] mt-1">Add vehicle fitment data for this part.</p>
       <button
-        class="mt-3 flex items-center gap-1 text-[12px] text-[#444] border border-[#ddd] px-3 py-1 rounded-sm hover:border-[#3bbfa0] transition-colors"
+        class="mt-3 flex items-center gap-1 text-[12px] text-[#444] dark:text-[#ccc] border border-[#ddd] dark:border-[#2a2a40] px-3 py-1 rounded-sm hover:border-[#3bbfa0] transition-colors"
         @click="openAdd"
       >
         <Plus class="h-3.5 w-3.5" />

@@ -2,6 +2,7 @@
 import { ref, watch, computed } from 'vue'
 import { useRouter, useRoute } from 'vue-router'
 import { useCatalogStore } from '@/stores/catalog'
+import { useThemeStore } from '@/stores/theme'
 import {
   ChevronDown,
   ChevronRight,
@@ -12,9 +13,12 @@ import {
   LogOut,
   Package,
   ShieldCheck,
+  Moon,
+  Sun,
 } from 'lucide-vue-next'
 
 const store = useCatalogStore()
+const themeStore = useThemeStore()
 const router = useRouter()
 const route = useRoute()
 
@@ -43,7 +47,7 @@ watch(() => route.fullPath, () => {
 
 <template>
   <!-- Desktop Sidebar -->
-  <aside class="hidden md:flex flex-col w-[200px] shrink-0 bg-[#1a1a2e] text-[#b0b0b0] overflow-hidden">
+  <aside class="hidden md:flex flex-col w-[200px] shrink-0 bg-[#1a1a2e] dark:bg-[#0a0a16] text-[#b0b0b0] overflow-hidden">
     <!-- Logo -->
     <div class="flex items-center gap-2 px-4 h-12 border-b border-white/[0.08]">
       <div class="flex h-6 w-6 items-center justify-center rounded bg-[#3bbfa0] text-white text-[11px] font-semibold">
@@ -174,8 +178,16 @@ watch(() => route.fullPath, () => {
       </div>
     </div>
 
-    <!-- Footer -->
+    <!-- Theme Toggle + Footer -->
     <div class="border-t border-white/[0.08] px-3 py-2">
+      <button
+        @click="themeStore.toggle()"
+        class="flex items-center gap-2 w-full px-1 py-1.5 rounded text-[12px] text-[#888] hover:text-white/80 hover:bg-white/[0.06] transition-colors cursor-pointer mb-1"
+      >
+        <Sun v-if="themeStore.dark" class="h-3.5 w-3.5" />
+        <Moon v-else class="h-3.5 w-3.5" />
+        <span>{{ themeStore.dark ? 'Light Mode' : 'Dark Mode' }}</span>
+      </button>
       <div class="flex items-center gap-2">
         <div class="flex h-6 w-6 items-center justify-center rounded-full bg-[#3bbfa0] text-white text-[10px] font-medium">
           MW
@@ -206,7 +218,7 @@ watch(() => route.fullPath, () => {
         />
 
         <!-- Drawer -->
-        <aside class="absolute inset-y-0 left-0 flex flex-col w-[260px] bg-[#1a1a2e] text-[#b0b0b0] shadow-xl">
+        <aside class="absolute inset-y-0 left-0 flex flex-col w-[260px] bg-[#1a1a2e] dark:bg-[#0a0a16] text-[#b0b0b0] shadow-xl">
           <!-- Logo + Close -->
           <div class="flex items-center justify-between px-4 h-12 border-b border-white/[0.08]">
             <div class="flex items-center gap-2">
@@ -309,8 +321,16 @@ watch(() => route.fullPath, () => {
             </div>
           </nav>
 
-          <!-- Footer -->
+          <!-- Theme Toggle + Footer -->
           <div class="border-t border-white/[0.08] px-3 py-3">
+            <button
+              @click="themeStore.toggle()"
+              class="flex items-center gap-2 w-full px-1 py-1.5 rounded text-[12px] text-[#888] hover:text-white/80 hover:bg-white/[0.06] transition-colors cursor-pointer mb-2"
+            >
+              <Sun v-if="themeStore.dark" class="h-3.5 w-3.5" />
+              <Moon v-else class="h-3.5 w-3.5" />
+              <span>{{ themeStore.dark ? 'Light Mode' : 'Dark Mode' }}</span>
+            </button>
             <div class="flex items-center gap-2">
               <div class="flex h-6 w-6 items-center justify-center rounded-full bg-[#3bbfa0] text-white text-[10px] font-medium">
                 MW
