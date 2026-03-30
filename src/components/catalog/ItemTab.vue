@@ -74,29 +74,31 @@ const partsForSubcategory = computed(() => {
   return sub?.parts ?? []
 })
 
-function onCategoryChange(val: string) {
-  form.category = val
+function onCategoryChange(val: string | number | bigint | Record<string, any> | null) {
+  form.category = String(val ?? '')
   form.subcategory = ''
   form.partName = ''
   form.partTerminologyId = 0
 }
 
-function onSubcategoryChange(val: string) {
-  form.subcategory = val
+function onSubcategoryChange(val: string | number | bigint | Record<string, any> | null) {
+  form.subcategory = String(val ?? '')
   form.partName = ''
   form.partTerminologyId = 0
 }
 
-function onPartTypeChange(val: string) {
-  const entry = partsForSubcategory.value.find((p) => String(p.partTerminologyId) === val)
+function onPartTypeChange(val: string | number | bigint | Record<string, any> | null) {
+  const v = String(val ?? '')
+  const entry = partsForSubcategory.value.find((p) => String(p.partTerminologyId) === v)
   if (entry) {
     form.partTerminologyId = entry.partTerminologyId
     form.partName = entry.partName
   }
 }
 
-function onBrandChange(val: string) {
-  const brand = brands.find((b) => b.code === val)
+function onBrandChange(val: string | number | bigint | Record<string, any> | null) {
+  const v = String(val ?? '')
+  const brand = brands.find((b) => b.code === v)
   if (brand) {
     form.brandCode = brand.code
     form.brandName = brand.name
